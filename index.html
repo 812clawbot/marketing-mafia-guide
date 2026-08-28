@@ -1,0 +1,1079 @@
+<title>Marketing Mafia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #0c0d11;
+  --surface: #15161d;
+  --surface-hover: #1c1e28;
+  --accent: #3b82f6;
+  --accent-soft: rgba(59,130,246,0.1);
+  --accent-2: #f59e0b;
+  --text: #e4e4e8;
+  --text-muted: #7c7e8a;
+  --border: #23252f;
+  --tag-bg: #1e2030;
+  --tag-text: #b0b2bc;
+  --link: #60a5fa;
+  --green: #22c55e;
+  --red: #ef4444;
+  --purple: #a78bfa;
+  --purple-soft: rgba(167,139,250,0.1);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f8f8fa;
+    --surface: #ffffff;
+    --surface-hover: #f3f3f6;
+    --accent: #2563eb;
+    --accent-soft: rgba(37,99,235,0.07);
+    --accent-2: #d97706;
+    --text: #18181b;
+    --text-muted: #71717a;
+    --border: #e4e4e7;
+    --tag-bg: #f0f0f3;
+    --tag-text: #52525b;
+    --link: #2563eb;
+    --green: #16a34a;
+    --red: #dc2626;
+    --purple: #7c3aed;
+    --purple-soft: rgba(124,58,237,0.07);
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f8f8fa;
+  --surface: #ffffff;
+  --surface-hover: #f3f3f6;
+  --accent: #2563eb;
+  --accent-soft: rgba(37,99,235,0.07);
+  --accent-2: #d97706;
+  --text: #18181b;
+  --text-muted: #71717a;
+  --border: #e4e4e7;
+  --tag-bg: #f0f0f3;
+  --tag-text: #52525b;
+  --link: #2563eb;
+  --green: #16a34a;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --purple-soft: rgba(124,58,237,0.07);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 24px 16px;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+}
+.sidebar-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+  padding: 0 8px;
+}
+.sidebar-subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 0 8px;
+  margin-bottom: 20px;
+}
+.nav-group { margin-bottom: 18px; }
+.nav-label {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 8px;
+  margin-bottom: 4px;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.nav-link:hover { background: var(--surface-hover); }
+.nav-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: auto;
+}
+.nav-step {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: var(--accent-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.main {
+  padding: 40px 56px 100px;
+  max-width: 900px;
+}
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  text-wrap: balance;
+}
+.subtitle {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 6px 0 20px;
+}
+
+/* Learning Path */
+.learning-path {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.learning-path h2 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.path-steps {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.path-step {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s;
+}
+.path-step:hover { border-color: var(--accent); }
+.path-step-num {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.path-step-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.path-step-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+.stat-num {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.stat-label { font-size: 12px; color: var(--text-muted); }
+
+.section { margin-bottom: 48px; }
+.section-header {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-header.business { border-bottom-color: var(--purple); }
+.section-num {
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.section-num.business { background: var(--purple); }
+.section-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: auto;
+}
+.section-badge.production { background: var(--accent-soft); color: var(--accent); }
+.section-badge.business { background: var(--purple-soft); color: var(--purple); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.card-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+.tag {
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.tag--video { background: var(--accent-soft); color: var(--accent); }
+.tag--doc { background: rgba(245,158,11,0.1); color: var(--accent-2); }
+.tag--file { background: rgba(34,197,94,0.1); color: var(--green); }
+.tag--skill { background: var(--purple-soft); color: var(--purple); }
+
+.card p { margin-bottom: 8px; }
+.card a { color: var(--link); word-break: break-all; }
+.card ul { padding-left: 18px; margin: 6px 0; }
+.card li { margin-bottom: 3px; font-size: 15px; }
+
+.prompt-label {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin: 10px 0 4px;
+}
+.prompt-block {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  font-family: 'Source Sans 3', monospace;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.compare-table th, .compare-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.compare-table th {
+  background: var(--tag-bg);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 10px 0;
+}
+.tool-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.tool-card strong {
+  font-family: 'Outfit', sans-serif;
+  display: block;
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+.tool-card span { font-size: 12px; color: var(--text-muted); }
+
+.video-player {
+  margin: 12px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+.video-player video {
+  width: 100%;
+  max-height: 480px;
+  display: block;
+}
+
+.doc-list { list-style: none; padding: 0; margin: 8px 0; }
+.doc-list li {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.doc-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.doc-list li.gdoc::before { background: var(--accent-2); }
+.doc-list li.gdrive::before { background: var(--green); }
+.doc-list a { color: var(--link); text-decoration: none; }
+.doc-list a:hover { text-decoration: underline; }
+
+.file-tree {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-family: 'Source Sans 3', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-x: auto;
+  white-space: pre;
+}
+.file-tree .dir { color: var(--accent); font-weight: 600; }
+.file-tree .size { color: var(--text-muted); }
+
+/* Callout box */
+.callout {
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  border-left: 3px solid;
+}
+.callout.info { background: var(--accent-soft); border-color: var(--accent); }
+.callout.warn { background: rgba(245,158,11,0.08); border-color: var(--accent-2); }
+.callout.business { background: var(--purple-soft); border-color: var(--purple); }
+.callout strong { font-family: 'Outfit', sans-serif; }
+
+/* Tutorial section */
+.tutorial {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 12px;
+}
+.tutorial h3 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.tutorial-step {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.tutorial-step-num {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.tutorial-step-content { flex: 1; }
+.tutorial-step-content p { margin-bottom: 6px; font-size: 14px; }
+.tutorial-step-content code {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-family: 'Source Sans 3', monospace;
+}
+.code-block {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: 'Source Sans 3', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 6px 0 8px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main { padding: 20px 16px 60px; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .stats { gap: 10px; }
+  .path-steps { flex-direction: column; }
+  .path-step { min-width: unset; }
+}
+</style>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-title">Marketing Mafia</div>
+    <div class="sidebar-subtitle">AI UGC Production Guide</div>
+
+    <div class="nav-group">
+      <div class="nav-label">Learning Path</div>
+      <a class="nav-link" href="#foundation"><span class="nav-step">1</span> Foundation</a>
+      <a class="nav-link" href="#tools"><span class="nav-step">2</span> Tools Setup</a>
+      <a class="nav-link" href="#images"><span class="nav-step">3</span> AI Images</a>
+      <a class="nav-link" href="#omni"><span class="nav-step">4</span> Google Omni</a>
+      <a class="nav-link" href="#seedance"><span class="nav-step">5</span> Seedance 2.0</a>
+      <a class="nav-link" href="#kling"><span class="nav-step">6</span> Kling 3.0</a>
+      <a class="nav-link" href="#extras"><span class="nav-step">7</span> Lipsync &amp; More</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">B-Rolls</div>
+      <a class="nav-link" href="#brolls"><span class="nav-step">8</span> 5 lessons <span class="nav-count">159 MB</span></a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Animation Ads</div>
+      <a class="nav-link" href="#animation-ads"><span class="nav-step">9</span> Whiteboard + VOX <span class="nav-count">109 MB</span></a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Advanced</div>
+      <a class="nav-link" href="#skills"><span class="nav-step">10</span> Omni Skills</a>
+      <a class="nav-link" href="#skills-tutorial"> Claude Code Tutorial</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label" style="color:var(--purple)">Business / Strategy</div>
+      <a class="nav-link" href="#mm-course">Course <span class="nav-count">17 lessons</span></a>
+      <a class="nav-link" href="#mm-docs">Google Docs</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Reference</div>
+      <a class="nav-link" href="#files">File Tree</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <h1>Marketing Mafia &mdash; AI UGC Production Guide</h1>
+    <p class="subtitle">Complete course content, organized for video editors</p>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-num">15</div><div class="stat-label">Videos</div></div>
+      <div class="stat"><div class="stat-num">768 MB</div><div class="stat-label">Total</div></div>
+      <div class="stat"><div class="stat-num">17</div><div class="stat-label">Google Docs</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Skill Files</div></div>
+    </div>
+
+    <!-- LEARNING PATH -->
+    <div class="learning-path">
+      <h2>Learning Path</h2>
+      <p style="font-size:14px; color:var(--text-muted); margin-bottom:14px">Follow this order. Each step builds on the previous one.</p>
+      <div class="path-steps">
+        <a class="path-step" href="#foundation">
+          <div class="path-step-num">Step 1</div>
+          <div class="path-step-title">Foundation</div>
+          <div class="path-step-desc">Why AI UGC works + prompt theory</div>
+        </a>
+        <a class="path-step" href="#images">
+          <div class="path-step-num">Step 2</div>
+          <div class="path-step-title">AI Images</div>
+          <div class="path-step-desc">Generate photorealistic reference frames</div>
+        </a>
+        <a class="path-step" href="#omni">
+          <div class="path-step-num">Step 3</div>
+          <div class="path-step-title">Video Generation</div>
+          <div class="path-step-desc">Omni, Seedance, Kling workflows</div>
+        </a>
+        <a class="path-step" href="#brolls">
+          <div class="path-step-num">Step 4</div>
+          <div class="path-step-title">B-Rolls</div>
+          <div class="path-step-desc">Script-specific, library, medical style</div>
+        </a>
+        <a class="path-step" href="#animation-ads">
+          <div class="path-step-num">Step 5</div>
+          <div class="path-step-title">Animation Ads</div>
+          <div class="path-step-desc">Whiteboard + VOX paper-collage style</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 1: FOUNDATION -->
+    <!-- ============================================ -->
+    <div class="section" id="foundation">
+      <div class="section-header"><span class="section-num">1</span> Foundation &amp; Mindset <span class="section-badge production">Production</span></div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Why AI UGC Prints Money</span>
+        </div>
+
+        <div style="overflow-x:auto">
+        <table class="compare-table">
+          <tr><th>Old Way</th><th>Anti-Slop AI UGC Way</th></tr>
+          <tr><td>$100-500 per video</td><td>$1-10 per video</td></tr>
+          <tr><td>1 week turnaround</td><td>10 minutes turnaround</td></tr>
+          <tr><td>10 vids = $2,000 + 2 weeks</td><td>5 vids for $20, done today</td></tr>
+        </table>
+        </div>
+
+        <p>It's not about saving money. It's about buying <strong>speed and data</strong>. While your competitors test 5 variations, you test 50.</p>
+
+        <p><strong>"AI Looks Fake" Is Cope</strong> &mdash; Test on 100 people with 20 UGC videos (10 real, 10 AI): 47% identified AI videos as REAL. Top 3 "most authentic"? 2 were AI.</p>
+
+        <p><strong>Why 99% of AI UGC is trash:</strong> The problem isn't AI &mdash; it's lazy prompts.</p>
+        <div class="prompt-label">What doesn't work</div>
+        <div class="prompt-block">"Woman talking about sleep gummies"</div>
+        <div class="prompt-label">What prints</div>
+        <div class="prompt-block">"Fixed iPhone camera on woman in late 20s, softly lit bedroom, golden hour. Unmade bed in background, string lights on wall. She holds sleep gummy jar naturally at chest level, thumb on label. Direct eye contact, genuine smile, slight head tilt. Speaks like a friend recommending something—conversational, energetic but natural. Tilts jar at 2sec mark, brings closer at 4sec, light head nod on key benefit. Natural sway. Light catches label. Soft shadows from window."</div>
+
+        <div style="overflow-x:auto">
+        <table class="compare-table">
+          <tr><th>WILL Do</th><th>WON'T Do</th></tr>
+          <tr><td>Annihilate your UGC costs</td><td>Make every video a winner</td></tr>
+          <tr><td>50x your testing velocity</td><td>Replace strategy</td></tr>
+          <tr><td>Give you absolute creative control</td><td>Work if you're lazy</td></tr>
+        </table>
+        </div>
+        <p style="color:var(--text-muted); font-size:14px">At $3 per video, you have a license to fail your way to a massive winner. 98% of advertisers aren't doing this yet. It's Facebook Ads in 2014.</p>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 2: TOOLS -->
+    <!-- ============================================ -->
+    <div class="section" id="tools">
+      <div class="section-header"><span class="section-num">2</span> Recommended Tools <span class="section-badge production">Production</span></div>
+      <div class="card">
+        <div class="tools-grid">
+          <div class="tool-card">
+            <strong>KIE AI</strong>
+            <span>Kling 3.0, Seedance 2.0, ChatGPT images v2, Veo 3.1 &mdash; all-in-one, affordable</span><br>
+            <a href="https://kie.ai/?ref=468b82849eb33bedd83b0e61a6046562" style="color:var(--link); font-size:13px">kie.ai</a>
+          </div>
+          <div class="tool-card">
+            <strong>Google Ultra Plan</strong>
+            <span>$125/mo. Unlimited images + Veo 3.1. ~$1.44 per 60s of video</span>
+          </div>
+          <div class="tool-card">
+            <strong>muapi.ai</strong>
+            <span>API access for advanced users (requires coding)</span><br>
+            <a href="https://muapi.ai/" style="color:var(--link); font-size:13px">muapi.ai</a>
+          </div>
+          <div class="tool-card">
+            <strong>apiyi.com</strong>
+            <span>Alternative API for advanced users</span><br>
+            <a href="https://apiyi.com/" style="color:var(--link); font-size:13px">apiyi.com</a>
+          </div>
+        </div>
+        <p style="color:var(--text-muted); font-size:13px">Avoid Higgsfield &mdash; attractive pricing upfront but "scammy" according to the instructor.</p>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 3: IMAGES IA -->
+    <!-- ============================================ -->
+    <div class="section" id="images">
+      <div class="section-header"><span class="section-num">3</span> AI Images <span class="section-badge production">Production</span></div>
+
+      <div class="callout info"><strong>Why this matters:</strong> AI images are your reference frames. You generate a photorealistic still of your "actor" first, then feed it into a video model (Omni, Seedance, Kling) to animate it. Better image = better video.</div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">ChatGPT 2.0 &mdash; Photorealistic Images</span>
+          <span class="tag tag--doc">Google Doc</span>
+        </div>
+        <p>Workflow: upload a real reference photo &rarr; paste the Doc instructions into ChatGPT &rarr; use the generated prompt.</p>
+        <p><a href="https://docs.google.com/document/d/1cbozXfDjniWRuGlQ4HevoQFWwVTGjesQJ5iy2Hxs13o/edit" target="_blank" rel="noopener">Google Doc &mdash; LLM INSTRUCTION IMAGES V2</a></p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Higgs SOUL Alternative (By Joseph)</span>
+          <span class="tag tag--doc">Google Doc</span>
+        </div>
+        <p><a href="https://docs.google.com/document/d/1GH_l1tsNvGG0zpV8yqot3pN-Ffi5Drx6KqvQ7ONRIG8/edit" target="_blank" rel="noopener">Google Doc &mdash; Higgs SOUL workflow</a></p>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 4: GOOGLE OMNI -->
+    <!-- ============================================ -->
+    <div class="section" id="omni">
+      <div class="section-header"><span class="section-num">4</span> Google Omni <span class="section-badge production">Production</span></div>
+
+      <div class="callout info"><strong>Core workflow:</strong> Google Omni is the cheapest and best video model for UGC. Generate your reference image (Step 3), then use these prompts to turn it into a talking-head video. The two prompts below cover 90% of use cases.</div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Google Omni &mdash; Cheapest &amp; Best Workflow</span>
+          <span class="tag tag--video">Video 12:06</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="01-ai-ugc-v3/01-google-omni.mp4"></video></div>
+
+        <div class="prompt-label">Prompt P1: General Use</div>
+        <div class="prompt-block">natural and realistic arm movements, subtle lean forward, looks directly at the lens the whole time
+
+he/she says in an american 20 year old ugc tone:
+
+"[YOUR SCRIPT HERE]"
+
+Ambient Sound. No cuts. No zooms. No transitions. Raw iPhone footage, expressive ugc movements, UGC aesthetic. Vertical 9:16. NO PRODUCT IN HAND. ONE CONTINUOUS SHOT</div>
+
+        <div class="prompt-label">Prompt P2: Static Tripod</div>
+        <div class="prompt-block">Static tripod shot, natural and realistic arm movements, subtle lean forward, looks directly at the lens the whole time
+
+he/she says in an american 20 year old ugc tone:
+
+"[YOUR SCRIPT HERE]"
+
+Ambient Sound. No cuts. No zooms. No transitions. Raw iPhone footage, expressive ugc movements, UGC aesthetic. Vertical 9:16. NO PRODUCT IN HAND. ONE CONTINUOUS SHOT</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Motion Control</span>
+          <span class="tag tag--video">Video 3:31</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="01-ai-ugc-v3/02-motion-control.mp4"></video></div>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 5: SEEDANCE -->
+    <!-- ============================================ -->
+    <div class="section" id="seedance">
+      <div class="section-header"><span class="section-num">5</span> Seedance 2.0 <span class="section-badge production">Production</span></div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Seedance 2 &mdash; AI UGC</span>
+          <span class="tag tag--video">Video 12:20</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="01-ai-ugc-v3/03-seedance-2.mp4"></video></div>
+        <p><a href="https://docs.google.com/document/d/1oaeMdDj8KQOyjIEKgQxLZa3eMUZh4Eafy8lM225dhro/edit" target="_blank" rel="noopener">Google Doc &mdash; Seedance 2 workflow</a></p>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 6: KLING -->
+    <!-- ============================================ -->
+    <div class="section" id="kling">
+      <div class="section-header"><span class="section-num">6</span> Kling 3.0 <span class="section-badge production">Production</span></div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Kling 3.0 &mdash; Updated Workflow</span>
+          <span class="tag tag--video">Video 19:07</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="01-ai-ugc-v3/04-kling-3.mp4"></video></div>
+        <p><a href="https://docs.google.com/document/d/1_U7aT7cNadhjRYKhW3_7so_KBWCgK7NyboRrrl8QfII/edit" target="_blank" rel="noopener">Google Doc &mdash; Kling 3.0 workflow</a></p>
+        <p><a href="https://drive.google.com/drive/folders/1jaoXfy2FMGOVHJTn1BOvC4iMS4cGpnFG" target="_blank" rel="noopener">Claude prompts folder</a></p>
+
+        <div class="prompt-label">Prompt &mdash; Replace a Character (Nano Banana Pro)</div>
+        <div class="prompt-block">replace the first character with 2nd character, upscale the image, remove play button and text</div>
+
+        <div class="prompt-label">Prompt &mdash; Keep Character, Change Action</div>
+        <div class="prompt-block">Exact same framing as Image 1 — same character, same set, same lighting. Vary only prop and gesture/expression as noted per clip below.
+Camera: Same as Image 1. Deep focus on everything. No blur.
+Lighting: Same as Image 1.
+ABSOLUTELY NO phones, cameras, screens, social media UI, floating text, or digital overlays visible anywhere in the frame.
+
+Right hand raises mic slightly, left hand gesturing open. Urgent, direct expression</div>
+        <p><strong>Tools:</strong> CapCut + Adobe Podcast (voice enhancing)</p>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 7: EXTRAS V3 -->
+    <!-- ============================================ -->
+    <div class="section" id="extras">
+      <div class="section-header"><span class="section-num">7</span> Animations, Lipsync &amp; More <span class="section-badge production">Production</span></div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">AI Animations</span>
+          <span class="tag tag--doc">Google Doc</span>
+        </div>
+        <p><a href="https://docs.google.com/document/d/1WA47D9T71FRFpvlIqaEaytsGdlZQAHdVVS7kITO7YHQ/edit" target="_blank" rel="noopener">Google Doc &mdash; AI Animations workflow</a></p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">AI Lipsync</span>
+          <span class="tag tag--video">Video 0:13</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="01-ai-ugc-v3/05-ai-lipsync.mp4"></video></div>
+        <p><a href="https://docs.google.com/document/d/1cejtbtqxy0lH6CsLO7FmrdRAdC2tdO36PQdBxHzcTMM/edit" target="_blank" rel="noopener">Google Doc &mdash; AI Lipsync workflow</a></p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">AI Talking Fruit</span>
+          <span class="tag tag--video">Video 0:04</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="01-ai-ugc-v3/06-ai-talking-fruit.mp4"></video></div>
+        <p><a href="https://docs.google.com/document/d/1qD8LyZP4pMG3l0nkNyTVL5_4uk8kDRHzA6s3-mefDys/edit" target="_blank" rel="noopener">Google Doc &mdash; AI Talking Fruit workflow</a></p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Prompts Collection</span>
+          <span class="tag">Canva</span>
+        </div>
+        <p><a href="https://www.canva.com/design/DAHEs9nMCTA/U8nn-VOCxjzGDUpYDkILIw/edit" target="_blank" rel="noopener">Open on Canva</a></p>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 8: B-ROLLS -->
+    <!-- ============================================ -->
+    <div class="section" id="brolls">
+      <div class="section-header"><span class="section-num">8</span> AI B-Rolls <span class="section-badge production">Production</span></div>
+
+      <div class="callout info"><strong>Context:</strong> B-roll is the supplementary footage intercut with your main UGC talking-head shots. These 5 lessons cover different approaches &mdash; from script-specific AI-generated b-roll to building a reusable library and medical-style shots for health/supplement ads.</div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">1. Script-Specific B-Roll</span>
+          <span class="tag tag--video">Video</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="02-b-rolls/01-script-specific-broll.mp4"></video></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">2. AI B-Roll Library</span>
+          <span class="tag tag--video">Video</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="02-b-rolls/02-ai-broll-library.mp4"></video></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">3. Medical Style B-Roll</span>
+          <span class="tag tag--video">Video</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="02-b-rolls/03-medical-style-broll.mp4"></video></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">4. Chapter 4</span>
+          <span class="tag tag--video">Video</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="02-b-rolls/04-chapter4.mp4"></video></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">5. Handmade / Recorded B-Roll</span>
+          <span class="tag tag--video">Video</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="02-b-rolls/05-handmade-recorded-broll.mp4"></video></div>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 9: ANIMATION ADS -->
+    <!-- ============================================ -->
+    <div class="section" id="animation-ads">
+      <div class="section-header"><span class="section-num">9</span> Animation Ads <span class="section-badge production">Production</span></div>
+
+      <div class="callout info"><strong>Two styles covered:</strong> Whiteboard-style ads (hand-drawn educational look) and VOX-style ads (paper-collage animation like Vox documentaries). Both use Google Omni for generation. See the Skills section below for ready-to-use Claude Code skills that automate the prompting.</div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Whiteboard Ads</span>
+          <span class="tag tag--video">Video 14m</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="03-animation-ads/01-whiteboard-ads.mp4"></video></div>
+        <p><a href="https://docs.google.com/document/d/1h9LgN-oCN6fjwxw8thbvM5b-HzslI-iGtsDine8RlB0/edit" target="_blank" rel="noopener">Google Doc &mdash; Whiteboard Ads workflow</a></p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">VOX Style Ads</span>
+          <span class="tag tag--video">Video 15m</span>
+        </div>
+        <div class="video-player"><video controls preload="metadata" src="03-animation-ads/02-vox-style-ads.mp4"></video></div>
+        <p><a href="https://docs.google.com/document/d/1vAKOtpc-UgMTSX0OV6Kbvj89d5JlN_JLTJl9JF3K9_k/edit" target="_blank" rel="noopener">Google Doc &mdash; VOX Style Ads workflow</a></p>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 10: SKILLS -->
+    <!-- ============================================ -->
+    <div class="section" id="skills">
+      <div class="section-header"><span class="section-num">10</span> Omni Skills <span class="section-badge production">Production</span></div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Google Omni Skills</span>
+          <span class="tag tag--skill">3 files</span>
+        </div>
+        <p>AI skills to use with Google Omni for automated ad generation. These are pre-built prompt systems that generate complete ad scripts + clip-by-clip Omni prompts from a single product description.</p>
+        <ul>
+          <li><strong>Whiteboard Skill</strong> &mdash; <code>05-skills/omni-whiteboard-skill.zip</code> &mdash; Generates whiteboard-style animated ads</li>
+          <li><strong>VOX Style Skill</strong> &mdash; <code>05-skills/vox-style-skill.md</code> &mdash; Full prompt system for Vox paper-collage animation ads (10s clips, DR copywriting built in)</li>
+          <li><strong>Chalkboard Skill</strong> &mdash; <code>05-skills/omni-chalkboard-skill.zip</code> &mdash; Chalkboard-style animated ads</li>
+        </ul>
+      </div>
+
+      <div class="callout info"><strong>What are these skills?</strong> Each skill is a detailed system prompt that turns Claude (or ChatGPT) into a specialized ad-creation assistant. You give it your product + offer, and it outputs a complete voiceover script plus copy-paste-ready Google Omni prompts for each 10-second clip. See the tutorial below for how to use them with Claude Code.</div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION: CLAUDE CODE TUTORIAL -->
+    <!-- ============================================ -->
+    <div class="section" id="skills-tutorial">
+      <div class="section-header"><span class="section-num">&rarr;</span> How to Use Skills with Claude Code</div>
+
+      <div class="tutorial">
+        <h3>Quick Setup (5 minutes)</h3>
+        <p style="font-size:14px; color:var(--text-muted); margin-bottom:16px">Claude Code is a terminal-based AI assistant. You can load "skills" (specialized prompts) that turn it into a domain expert. Here's how to use the Omni skills from this course.</p>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-num">1</div>
+          <div class="tutorial-step-content">
+            <p><strong>Install Claude Code</strong></p>
+            <p>Open your terminal and run:</p>
+            <div class="code-block">npm install -g @anthropic-ai/claude-code</div>
+            <p style="color:var(--text-muted); font-size:13px">Requires Node.js 18+. You'll need an Anthropic API key or a Claude Max subscription.</p>
+          </div>
+        </div>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-num">2</div>
+          <div class="tutorial-step-content">
+            <p><strong>Create a skills folder</strong></p>
+            <p>Navigate to any project folder and create a <code>.claude/skills/</code> directory:</p>
+            <div class="code-block">mkdir -p .claude/skills</div>
+          </div>
+        </div>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-num">3</div>
+          <div class="tutorial-step-content">
+            <p><strong>Add a skill file</strong></p>
+            <p>Copy <code>vox-style-skill.md</code> into <code>.claude/skills/</code>. For the .zip skills, unzip them first &mdash; they contain similar .md prompt files.</p>
+            <div class="code-block">cp 05-skills/vox-style-skill.md .claude/skills/vox-style.md</div>
+          </div>
+        </div>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-num">4</div>
+          <div class="tutorial-step-content">
+            <p><strong>Launch Claude Code and use the skill</strong></p>
+            <p>Start Claude Code in the same folder, then invoke the skill:</p>
+            <div class="code-block">claude
+# Once inside, type:
+/vox-style</div>
+            <p style="color:var(--text-muted); font-size:13px">Claude will load the skill and ask you 3 intake questions (product image, clip chaining, simple vs complex mode). Then give it your product + offer and it generates everything.</p>
+          </div>
+        </div>
+
+        <div class="tutorial-step">
+          <div class="tutorial-step-num">5</div>
+          <div class="tutorial-step-content">
+            <p><strong>Copy prompts into Google Omni</strong></p>
+            <p>Claude outputs numbered clips (CLIP 1, CLIP 2, ...) with copy-paste-ready prompts. Paste each clip's prompt into Google Omni, generate the 10s video, then move to the next clip. Stitch them together in CapCut or your editor of choice.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn"><strong>Alternative (no Claude Code):</strong> You can also paste the entire content of <code>vox-style-skill.md</code> as a system prompt in ChatGPT or the Claude web app. It works the same way &mdash; Claude Code just makes it faster to invoke repeatedly.</div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 11: MARKETING MAFIA COURSE -->
+    <!-- ============================================ -->
+    <div class="section" id="mm-course">
+      <div class="section-header business"><span class="section-num business">11</span> Marketing Mafia Course <span class="section-badge business">Business / Strategy</span></div>
+
+      <div class="callout business"><strong>Note for video editors:</strong> This section covers business strategy, copywriting, and media buying (affiliate tracking, landing pages). It's useful context for understanding the ads you're producing, but not required for the production workflow above.</div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">AI Agent Copywriting</span>
+          <span class="tag tag--video">Video 17:11</span>
+        </div>
+        <p>How to use AI agents to write direct-response ad copy. Covers prompt engineering for copywriting, headline frameworks, and building an AI copywriting workflow.</p>
+        <div class="video-player"><video controls preload="metadata" src="04-marketing-mafia-course/02-ai-agent-copywriting.mp4"></video></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Meeting with Members</span>
+          <span class="tag tag--video">Video 57:54</span>
+        </div>
+        <p>Recorded Q&A session with community members. Covers real campaign breakdowns, what's working, scaling strategies, and troubleshooting.</p>
+        <div class="video-player"><video controls preload="metadata" src="04-marketing-mafia-course/03-meeting-with-members.mp4"></video></div>
+      </div>
+
+      <div class="card" id="mm-docs">
+        <div class="card-header">
+          <span class="card-title">Google Docs &amp; Resources</span>
+          <span class="tag tag--doc">13 links</span>
+        </div>
+
+        <p style="font-size:14px; color:var(--text-muted); margin-bottom:8px">All documents from the Marketing Mafia course:</p>
+
+        <ul class="doc-list">
+          <li class="gdoc"><a href="https://docs.google.com/document/d/1RwkQ3hAqC_5M8HtNnATROTxG0rAvsqe1tS2gfUfDrTI/edit" target="_blank">AI Copywriting GEM</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/1JJaAp9qOoDoW6-NZN_H8axAo8BOpfJd-nG02m6XDIMU/edit" target="_blank">AI Advertorials</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/1o4lXUxPX8Aa1B-DGkIf2p1g6RZqauTSjBcM88d1RuGw/edit" target="_blank">AI Meta Ads Captions</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/1MIh-A2LQCuHqI6vyOnqBpUYN_tA_6q0wF8GUG7ruXLQ/edit" target="_blank">Static Ads</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/1AFPs8ooW_8E5WnaSUYWV2h__tzKhPHpSsR031bhaz7A/edit" target="_blank">VEO 3.1 Automation</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/1XcRlpeLYDM0dmYAP_r0BTCqD-PM4HQZBXIWBm305mRU/edit" target="_blank">Everflow Postback</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/18D4ynuT2adRdL74m0gttTUqJAe13W-AiLWL6G8MzWDs/edit" target="_blank">Postback Keitaro</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/10CTm3eQ4uAtkOoNKk7HqdZ-TGetV7yTipL28eTdd_yI/edit" target="_blank">Add Traffic Source Keitaro</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/1rl4lnrouRVzDOEw8Ke4C4z1iM93hoUqUXUXIS6zbkjw/edit" target="_blank">Add Offer Keitaro</a></li>
+          <li class="gdoc"><a href="https://docs.google.com/document/d/1ZaPN2WwgAsr2RxADiNb48W4rPnc4eikVGozzfPDdzUg/edit" target="_blank">Lipo Gummies VSL4</a></li>
+          <li class="gdrive"><a href="https://drive.google.com/file/d/1TPTO2UfeQHFsHT4igzrsW5Pr2uVPBB2y/view" target="_blank">Landing Page Keitaro (PDF)</a></li>
+          <li class="gdrive"><a href="https://drive.google.com/file/d/1GNqef-vhs6tijWkgVpmSGqO3BJ_tya1R/view" target="_blank">FOX NEWS Landing Page (PDF)</a></li>
+          <li class="gdrive"><a href="https://drive.google.com/file/d/1OglT0yImoqei8JHE6a788csEGtGoCShd/view" target="_blank">Yahoo Landing Page (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECTION 12: FILE TREE -->
+    <!-- ============================================ -->
+    <div class="section" id="files">
+      <div class="section-header"><span class="section-num">12</span> File Tree</div>
+
+      <div class="card">
+        <div class="file-tree">
+<span class="dir">marketing-mafia/</span>
+├── guide.html
+├── <span class="dir">01-ai-ugc-v3/</span>
+│   ├── 01-google-omni.mp4            <span class="size">66 MB</span>
+│   ├── 02-motion-control.mp4         <span class="size">12 MB</span>
+│   ├── 03-seedance-2.mp4             <span class="size">48 MB</span>
+│   ├── 04-kling-3.mp4                <span class="size">90 MB</span>
+│   ├── 05-ai-lipsync.mp4             <span class="size">4.1 MB</span>
+│   └── 06-ai-talking-fruit.mp4       <span class="size">699 KB</span>
+├── <span class="dir">02-b-rolls/</span>
+│   ├── 01-script-specific-broll.mp4  <span class="size">28 MB</span>
+│   ├── 02-ai-broll-library.mp4       <span class="size">44 MB</span>
+│   ├── 03-medical-style-broll.mp4    <span class="size">23 MB</span>
+│   ├── 04-chapter4.mp4               <span class="size">4.6 MB</span>
+│   └── 05-handmade-recorded-broll.mp4 <span class="size">60 MB</span>
+├── <span class="dir">03-animation-ads/</span>
+│   ├── 01-whiteboard-ads.mp4         <span class="size">61 MB</span>
+│   └── 02-vox-style-ads.mp4          <span class="size">48 MB</span>
+├── <span class="dir">04-marketing-mafia-course/</span>
+│   ├── 02-ai-agent-copywriting.mp4   <span class="size">73 MB</span>
+│   └── 03-meeting-with-members.mp4   <span class="size">179 MB</span>
+├── <span class="dir">05-skills/</span>
+│   ├── omni-whiteboard-skill.zip     <span class="size">13 KB</span>
+│   ├── omni-chalkboard-skill.zip     <span class="size">9.6 KB</span>
+│   └── vox-style-skill.md            <span class="size">5 KB</span>
+└── <span class="dir">06-prompts/</span>
+    └── facebook_ads_library_export.zip <span class="size">25 MB</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.nav-link, .path-step').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
